@@ -1,4 +1,5 @@
-import { isNotEmpty, isString, IsNumber, IsString, IsNotEmpty, IsOptional } from "class-validator";
+import { isNotEmpty, isString, IsNumber, IsString, IsNotEmpty, IsOptional, IsEnum } from "class-validator";
+import { TypeUser } from "../schemas/user.schemas";
 export class UpdateUserDto {
     @IsString()
     @IsNotEmpty()
@@ -10,8 +11,14 @@ export class UpdateUserDto {
     @IsOptional()
     password: string;
 
-    @IsNumber()
+    @IsString()
     @IsNotEmpty()
     @IsOptional()
-    edad: number;
+    imagen: string;
+
+    @IsEnum(TypeUser)
+    @IsNotEmpty()
+    @IsOptional()
+    tipo: TypeUser;
+
 }

@@ -1,5 +1,11 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 
+export enum TypeUser{
+    admin  = 'admin',
+    user  = 'user', 
+    client =  'client'
+}
+
 @Schema()
 export class User{
     @Prop({ required: true })
@@ -9,7 +15,10 @@ export class User{
     password: string;
 
     @Prop({ required: true })
-    edad: number;
+    imagen: string;
+
+    @Prop({ default: TypeUser.user })
+    tipo: TypeUser
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

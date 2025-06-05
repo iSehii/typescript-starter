@@ -1,4 +1,5 @@
-import { isNotEmpty, isString, IsNumber, IsString, IsNotEmpty } from "class-validator";
+import { isNotEmpty, isString, IsNumber, IsString, IsNotEmpty, isNumber, IsOptional, IsEnum } from "class-validator";
+import { TypeUser } from "../schemas/user.schemas";
 export class CreateUserDto {
     @IsString()
     @IsNotEmpty()
@@ -8,7 +9,11 @@ export class CreateUserDto {
     @IsNotEmpty()
     password: string;
 
-    @IsNumber()
+    @IsString()
     @IsNotEmpty()
-    edad: number;
+    imagen: string; 
+
+    @IsEnum(TypeUser)
+    @IsOptional()
+    tipo: TypeUser;
 }
